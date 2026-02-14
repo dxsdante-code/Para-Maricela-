@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Maricela ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  background: linear-gradient(135deg, #1a1a1a, #3b0a0a);
+  color:white;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* Pantalla acceso */
+#login{
+  text-align:center;
+  padding:30px;
+}
+
+#login h1{
+  font-size:24px;
+  margin-bottom:20px;
+}
+
+input{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  width:250px;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:#ff4d6d;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#ff1e4d;
+}
+
+/* Carta */
+#cartaContainer{
+  display:none;
+  position:absolute;
+  width:100%;
+  height:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.sobre{
+  width:300px;
+  height:200px;
+  background:#b22222;
+  position:relative;
+  cursor:pointer;
+  perspective:1000px;
+}
+
+.tapa{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#8b0000;
+  transform-origin:top;
+  transition:1s;
+}
+
+.carta{
+  position:absolute;
+  width:280px;
+  height:180px;
+  background:white;
+  color:#333;
+  top:10px;
+  left:10px;
+  padding:15px;
+  opacity:0;
+  transition:1s;
+  overflow:auto;
+  border-radius:8px;
+}
+
+.abierto .tapa{
+  transform:rotateX(180deg);
+}
+
+.abierto .carta{
+  opacity:1;
+}
+
+/* Galería */
+.galeria{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px;
+}
+
+.galeria img{
+  width:120px;
+  height:150px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+  <h1>Este regalo es solo para ti, Maricela ❤️</h1>
+  <p>¿Cuál es nuestra canción romántica de reggae?</p>
+  <br>
+  <input type="text" id="respuesta" placeholder="Escribe la respuesta">
+  <br>
+  <button onclick="verificar()">Abrir mi carta 💌</button>
+</div>
+
+<div id="cartaContainer">
+  <div class="sobre" onclick="abrirCarta()">
+    <div class="tapa"></div>
+    <div class="carta">
+      <h3>Mi querida Maricela ❤️</h3>
+      <p>
+        Desde que llegaste a mi vida entendí que el amor no es solo una palabra,
+        sino una promesa diaria. Promesa de cuidarte, respetarte y elegirte todos los días.
+        <br><br>
+        Eres mi canción favorita, mi pensamiento constante y la mejor decisión que he tomado.
+        Contigo todo tiene sentido, todo es más bonito y todo vale la pena.
+        <br><br>
+        Este 14 de febrero no celebro una fecha…
+        celebro tenerte a ti.
+        <br><br>
+        Siempre tú. Siempre nosotros.
+        <br><br>
+        <strong>Gracias por ser mi esposa y mi compañera de vida.</strong>
+        <br><br>
+        Te amo más de lo que imaginas. ❤️
+      </p>
+    </div>
+  </div>
+
+  <div class="galeria">
+    <!-- Reemplaza estas imágenes por las tuyas -->
+    <img src="foto1.jpg">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+  </div>
+</div>
+
+<script>
+function verificar(){
+  const respuesta = document.getElementById("respuesta").value.toLowerCase().trim();
+  if(respuesta === "ilegal"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("cartaContainer").style.display="flex";
+  } else {
+    alert("Mmm… intenta otra vez ❤️");
+  }
+}
+
+function abrirCarta(){
+  document.querySelector(".sobre").classList.toggle("abierto");
+}
+</script>
+
+</body>
+      </html>
