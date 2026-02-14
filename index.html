@@ -23,7 +23,7 @@ body{
   overflow:hidden;
 }
 
-/* Pantalla acceso */
+/* LOGIN */
 #login{
   text-align:center;
   padding:30px;
@@ -48,14 +48,10 @@ button{
   cursor:pointer;
 }
 
-button:hover{
-  background:#ff1e4d;
-}
-
-/* Contenedor carta */
+/* CONTENEDOR */
 #cartaContainer{
   display:none;
-  position:absolute;
+  position:relative;
   width:100%;
   height:100%;
   justify-content:center;
@@ -63,7 +59,7 @@ button:hover{
   flex-direction:column;
 }
 
-/* Sobre */
+/* SOBRE */
 .sobre{
   width:320px;
   height:200px;
@@ -74,13 +70,15 @@ button:hover{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:15px;
-  border-radius:8px;
+  border-radius:10px;
+  z-index:2;
+  transition:0.5s;
 }
 
 .sobreTexto{
   font-weight:bold;
   font-size:16px;
+  padding:15px;
 }
 
 .tapa{
@@ -92,10 +90,10 @@ button:hover{
   left:0;
   transform-origin:top;
   transition:1s;
-  border-radius:8px;
+  border-radius:10px;
 }
 
-/* Carta grande */
+/* CARTA COMPLETA */
 .cartaCompleta{
   position:absolute;
   width:90%;
@@ -104,24 +102,26 @@ button:hover{
   color:#333;
   padding:25px;
   border-radius:12px;
-  top:100%;
-  opacity:0;
-  transition:1s;
   box-shadow:0 10px 25px rgba(0,0,0,0.5);
   max-height:80vh;
   overflow:auto;
+  opacity:0;
+  transform:translateY(100px);
+  transition:1s;
+  z-index:3;
 }
 
+/* ANIMACIÓN */
 .abierto .tapa{
   transform:rotateX(180deg);
 }
 
-.abierto .cartaCompleta{
-  top:10%;
+.abierto + .cartaCompleta{
   opacity:1;
+  transform:translateY(0);
 }
 
-/* Galería */
+/* GALERÍA */
 .galeria{
   margin-top:20px;
   display:flex;
@@ -134,7 +134,6 @@ button:hover{
   height:150px;
   object-fit:cover;
   border-radius:10px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.4);
 }
 </style>
 </head>
@@ -151,6 +150,7 @@ button:hover{
 </div>
 
 <div id="cartaContainer">
+  
   <div class="sobre" onclick="abrirCarta()">
     <div class="sobreTexto">
       De tu lobo 🐺 <br>
@@ -185,7 +185,9 @@ button:hover{
       <img src="foto2.jpg">
       <img src="foto3.jpg">
     </div>
+
   </div>
+
 </div>
 
 <script>
